@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>unit tests for UI5SDK walkthrough</title>
+		<script id="sap-ui-bootstrap" src="/resources/sap-ui-core.js" data-sap-ui-resourceroots="{&quot;sap.ui5sdk.walkthrough&quot;:&quot;../../&quot;}" data-sap-ui-async="true">
+		</script>
+	<script src="../../../changes_preview.js"></script>
+
+	<script>(function(){document.addEventListener("load",function(e){if("OpaFrame"===e.target.id){var t=document.getElementById("OpaFrame").contentWindow.document,n=t.createElement("script");n.type="text/javascript",n.innerHTML="sap.ui.getCore().loadLibrary('sap.ui.fl'); jQuery.getScript('../../../changes_preview.js')",t.head.appendChild(n)}},!0)})()</script>
+
+		<link rel="stylesheet" type="text/css" href="https://sapui5.hana.ondemand.com/resources/sap/ui/thirdparty/qunit-2.css">
+		<script src="https://sapui5.hana.ondemand.com/resources/sap/ui/thirdparty/qunit-2.js"></script>
+		<script src="https://sapui5.hana.ondemand.com/resources/sap/ui/qunit/qunit-junit.js"></script>
+		<script src="https://sapui5.hana.ondemand.com/resources/sap/ui/qunit/qunit-coverage.js"></script>
+		<script src="https://openui5.hana.ondemand.com/resources/sap/ui/thirdparty/sinon.js"></script>
+		<script src="https://openui5.hana.ondemand.com/resources/sap/ui/thirdparty/sinon-qunit.js"></script>
+		<script src="unitTests.qunit.js"></script>
+	</head>
+	<body>
+		<div id="qunit"></div>
+		<div id="qunit-fixture"></div>
+	</body>
+</html>

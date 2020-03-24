@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>UI5SDK Demo Test Page</title>
+		<script>
+		//setting up configuration in local window for sap-ushell-config parameter
+			window["sap-ushell-config"] = {
+				defaultRenderer : "fiori2",
+				renderers : {
+					fiori2 : {
+						componentData : {
+							config : {
+								search : "hidden"
+							}
+						}
+					}
+				},
+				applications : {
+					//intent
+					"walkthrough-manage" : {
+						additionalInformation : "SAPUI5.Component=sap.ui5sdk.walkthrough",
+						applicationType : "URL",
+						url : "../",
+						description : "UI5SDK Walkthrough",
+						title : "Walkthrough with MockData"
+					}
+				}
+				
+			};
+		</script>
+		<script src="/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+		<script id="sap-ui-bootstrap" src="/resources/sap-ui-core.js" data-sap-ui-libs="sap.ushell" data-sap-ui-theme="sap_belize" data-sap-ui-bindingsyntax="complex" data-sap-ui-async="true" data-sap-ui-resourceroots="{&quot;sap.ui5sdk.walkthrough&quot;:&quot;../&quot;}">
+		</script>
+	<script src="../../changes_preview.js"></script>
+
+	<script>(function(){document.addEventListener("load",function(e){if("OpaFrame"===e.target.id){var t=document.getElementById("OpaFrame").contentWindow.document,n=t.createElement("script");n.type="text/javascript",n.innerHTML="sap.ui.getCore().loadLibrary('sap.ui.fl'); jQuery.getScript('../../changes_preview.js')",t.head.appendChild(n)}},!0)})()</script>
+
+		<script>
+			sap.ui.getCore().attachInit(function(){
+				sap.ui.require(["sap/ui5sdk/walkthrough/test/initMockServer"]);
+				sap.ushell.Container.createRenderer().placeAt("content");
+			});
+		</script>
+	</head>
+	<body class="sapUiBody" id="content">
+	
+	</body>
+</html>

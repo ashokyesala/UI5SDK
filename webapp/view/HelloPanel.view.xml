@@ -1,0 +1,32 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sap.ui5sdk.walkthrough.controller.HelloPanel"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Panel 
+		headerText="{i18n>helloPanelText}" 
+		class="sapUi5ResponsiveMargin" 
+		width="auto"
+		expandable="{device>/system/phone}"
+		expanded="{= !${device>/system/phone} }"
+		accessibleRole="Region">
+		<content>
+			<Button 
+				id="idHelloPanelBtn" 
+				icon="sap-icon://world" 
+				text="{i18n>helloBtnDialogText}" 
+				press="onPress" 
+				class="sapUiSmallMarginEnd sapUiVisibleOnlyOnDesktop">
+			</Button>
+			<Button
+				text="{i18n>helloBtnText}"
+				press=".onShowHello"/>
+			<Input 
+				value="{local>/recipient/name}" 
+				valueLiveUpdate="true" 
+				width="40%">
+			</Input>
+			<Text 
+				text="Hello {local>/recipient/name}" 
+				class="sapUiSmallMargin">
+			</Text>
+		</content>
+	</Panel>
+</mvc:View>

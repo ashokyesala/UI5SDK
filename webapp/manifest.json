@@ -1,0 +1,106 @@
+{
+	"_version": "1.6.0",
+	"sap.app": {
+		"_version": "1.3.0",
+		"id": "sap.ui5sdk.walkthrough",
+		"type": "application",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.1.0"
+		},
+		"dataSources": {
+			"invoiceRemote": {
+				"uri": "/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "1.3.0",
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.2.0",
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"rootView": {
+			"id": "appView",
+			"viewName": "sap.ui5sdk.walkthrough.view.App",
+			"type": "XML",
+			"async": true
+		},
+		"dependencies": {
+			"minUI5Version": "1.68.2",
+			"libs": {
+				"sap.m": {
+					"minVersion": "1.68.2"
+				}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.ui5sdk.walkthrough.i18n.i18n"
+				}
+			},
+			"invoice": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/modeldata/Invoices.json"
+			},
+			"invoiceRemote": {
+				"dataSource": "invoiceRemote",
+				"preload": true
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewPath": "sap.ui5sdk.walkthrough.view",
+				"viewType": "XML",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+				
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "overview",
+					"target": "overview"
+				},
+				{
+					"pattern": "detail/{id}",
+					"name": "detail",
+					"target": "detail"
+				}
+			],
+			"targets": {
+				"overview": {
+					"viewID": "overview",
+					"viewName": "Overview"
+					
+				},
+				"detail": {
+					"viewID": "detail",
+					"viewName": "Detail"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,59 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sap.ui5sdk.walkthrough.controller.InvoiceList"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Panel accessibleRole="Region">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>invoiceListTitle}"></Title>
+				<ToolbarSpacer></ToolbarSpacer>
+				<SearchField 
+					width="40%" 
+					search="onSearch"
+					ariaLabelledBy="searchFieldLabel"
+					ariaDescribedBy="searchFieldDescription"
+					placeholder="{i18n>searchFieldPlaceholder}">
+				</SearchField>
+			</Toolbar>
+		</headerToolbar>
+	<List id="idInvoiceList" class="sapUiResponsiveMargin" width="auto" 
+			items="{ path:'invoice>/Invoices',
+					 sorter:{
+						path:'ShipperName',
+						group:true
+						}}">
+		<items>
+			<ObjectListItem title="{invoice>Quantity} X {invoice>ProductName}"
+				number="{ 
+						parts:[{path:'invoice>ExtendedPrice'}, {path:'view>/currency'}],
+						type:'sap.ui.model.type.Currency',
+						formatOptions:{
+							showMeasure:false
+						}
+				}"
+				numberUnit="{view>/currency}"
+				numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success' }"
+				type="Navigation"
+				press="onPress">
+				<firstStatus>
+					<ObjectStatus text="{ path: 'invoice>Status',
+										  formatter:'.formatter.statusText'}" >
+					</ObjectStatus>
+				</firstStatus>
+			</ObjectListItem>
+		</items>
+	</List>
+	<List id="invoiceRemoteList" class="sapUiResponsiveMargin" width="auto" 
+			items="{invoiceRemote>/Invoices}" growing="true">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>invoiceRemoteTitle}"></Title>
+			</Toolbar>
+		</headerToolbar>
+		<items>
+			<ObjectListItem title="{invoiceRemote>ProductName}" 
+						number="{invoiceRemote>ExtendedPrice}"
+						numberUnit="{view>currency}">
+			</ObjectListItem>
+		</items>
+	</List>
+	</Panel>
+</mvc:View>

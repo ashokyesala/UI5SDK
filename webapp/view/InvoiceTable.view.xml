@@ -1,0 +1,80 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sap.ui5sdk.walkthrough.controller.InvoiceTable"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Panel accessibleRole="Region">
+		<headerToolbar>
+			<Toolbar>
+				<Title text="{i18n>invoiceTableTitle}"></Title>
+				<ToolbarSpacer></ToolbarSpacer>
+				<SearchField 
+						width="40%" 
+						search=".onSearch"
+						ariaLabelledBy="searchFieldLabel"
+						ariaDescribedBy="searchFieldDescription"
+						placeholder="{i18n>searchFieldPlaceholder}">
+					
+				</SearchField>
+			</Toolbar>
+		</headerToolbar>
+	<Table 
+		id="invoiceTable" 
+		class="sapUiResponsiveMargin"
+		width="auto"
+		items="{
+				path:'invoice>/Invoices',
+				sorter: {
+					path:'ShipperName',
+					group:true 
+				}}">
+		<columns>
+			<Column 
+					hAlign="End"
+					minScreenWidth="small"
+					width="auto"
+					demandPopin="true">
+				<Text text="{i18n>columnQuantity}"></Text>
+			</Column>
+			<Column>
+				<Text text="{i18n>columnName}"></Text>
+			</Column>
+			<Column 
+					minScreenWidth="small"
+					demandPopin="true">
+				<Text text="{i18n>columnStatus}"></Text>
+			</Column>
+			<Column
+					minScreenWidth="Tablet"
+					demandPopin="false">
+				<Text text="{i18n>columnSupplier}"></Text>
+			</Column>
+			<Column 
+					hAlign="End">
+				<Text text="{i18n>columnPrice}"></Text>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem
+					type="Navigation"
+					press=".onPress">
+				<cells>
+					<ObjectNumber number="{invoice>Quantity}" emphasized="false"></ObjectNumber>
+					<ObjectIdentifier title="{invoice>ProductName}"></ObjectIdentifier>
+					<Text 
+						text="{path:'invoice>Status',
+								formatter: '.formatter.statusText'}"></Text>
+					<Text text="{invoice>ShipperName}"></Text>
+					<ObjectNumber 
+							number= "{
+								parts: [{path:'invoice>ExtendedPrice'},{path:'{view>currency}'}],
+								type:'sap.ui.model.type.Currency',
+								formatOptions:{
+										showMeasure: false}
+									}"
+							unit="{view>currency}"
+							state="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"/>
+									
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+	</Panel>
+</mvc:View>
