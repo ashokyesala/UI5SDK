@@ -7,7 +7,16 @@
 		</script>
 	<script src="../changes_preview.js"></script>
 
-	<script>(function(){document.addEventListener("load",function(e){if("OpaFrame"===e.target.id){var t=document.getElementById("OpaFrame").contentWindow.document,n=t.createElement("script");n.type="text/javascript",n.innerHTML="sap.ui.getCore().loadLibrary('sap.ui.fl'); jQuery.getScript('../changes_preview.js')",t.head.appendChild(n)}},!0)})()</script>
+	<script>(function(){document.addEventListener('load', function(event){
+        	var element = event.target;
+            if( element.id === "OpaFrame"){
+               var opaFrameElementDocument = document.getElementById("OpaFrame").contentWindow.document;
+               var scriptObject = opaFrameElementDocument.createElement("script");
+               scriptObject.type = "text/javascript";
+               scriptObject.innerHTML = "sap.ui.getCore().loadLibrary('sap.ui.fl'); jQuery.getScript('../changes_preview.js')";
+               opaFrameElementDocument.head.appendChild(scriptObject);
+            }
+          },true);})()</script>
 
 	</head>
 	<body class="sapUiBody" id="content">
